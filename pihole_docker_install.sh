@@ -1,5 +1,23 @@
 #!/bin/bash
-# v 1.1
+# v 1.0
+
+
+
+
+unalias apt-get
+unalias apt
+sudo apt-get update
+sudo apt-get install snmpd
+sudo apt-get install libssl1.1
+sudo apt --fix-broken install
+# sudo apt-get install libssl1.1
+sudo apt-get install snmpd
+
+echo -e "# this will make snmpd listen on all interfaces\nagentAddress  udp:161\nrocommunity public 192.168.0.0/24" >  /etc/snmp/snmpd.conf
+sudo service snmpd restart
+[+] snmpd
+
+
 
 path1=/data/pi-hole
 if [ ! -d "$path1" ]; then
